@@ -4,42 +4,36 @@
 
 
 
-Problem Statement
+# Problem Statement
 The objective of this project is to build a machine learning model capable of extracting entity values from images. This functionality is vital in fields such as healthcare, e-commerce, and content moderation, where precise product information is critical. As digital marketplaces expand, many products lack detailed textual descriptions, making it necessary to extract essential details directly from images. These details include product specifications like weight, volume, voltage, wattage, dimensions, and more, which are crucial for digital stores.
 
-Dataset Description
+# Dataset Description
 The dataset consists of the following columns:
 
-index: A unique identifier (ID) for the data sample.
-image_link: Public URL for downloading the product image.
-Example link: Product Image
-You can use the download_images function from src/utils.py to download the images. Sample code is provided in src/test.ipynb.
-group_id: The category code of the product.
-entity_name: The product's entity name (e.g., item_weight).
-entity_value: The value of the entity (e.g., 34 gram).
-In the test.csv file, the entity_value column is not available as it is the target variable to predict.
-Task
+* index: A unique identifier (ID) for the data sample.
+* image_link: Public URL for downloading the product image.
+** Example link: Product Image
+** You can use the download_images function from src/utils.py to download the images. Sample code is provided in src/test.ipynb.
+* group_id: The category code of the product.
+* entity_name: The product's entity name (e.g., item_weight).
+* entity_value: The value of the entity (e.g., 34 gram).
+** In the test.csv file, the entity_value column is not available as it is the target variable to predict.
+  
+# Task
 For the test dataset, the task is to predict the entity_value for each sample using the product images and entity information. The output must follow the specified format provided in the Output Format section.
 
-Output Format
+# Output Format
 The output file must be a CSV with the following columns:
 
-index: The unique identifier (ID) for each test sample.
-prediction: A string in the format "x unit", where:
-x is a floating-point number (properly formatted).
-unit is one of the allowed units (defined in src/constants.py and in the Appendix).
-Example of Valid Predictions:
-2 gram
-12.5 centimetre
-2.56 ounce
-Example of Invalid Predictions:
-2 gms
-60 ounce/1.7 kilogram
-2.2e2 kilogram
+* index: The unique identifier (ID) for each test sample.
+* prediction: A string in the format "x unit", where:
+** x is a floating-point number (properly formatted).
+** unit is one of the allowed units (defined in src/constants.py and in the Appendix).
+
 Ensure to generate predictions for all indices. If no value is found in the image for a test sample, return an empty string (""). Mismatches in the number of predictions compared to the test file will result in an error.
 
-Files
-Dataset Files:
+# Files
+## Dataset Files:
 dataset/train.csv: Training file with entity_value labels.
 dataset/test.csv: Test file without the entity_value labels. You will generate predictions for this file.
 dataset/sample_test.csv: Sample input test file.
